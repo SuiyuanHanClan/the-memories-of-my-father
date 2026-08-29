@@ -1,127 +1,360 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>父亲的回忆录</title>
+    <title>父亲的回忆录</title>
 
-  <style>
-    body {
-      margin: 0;
-      background: #f7f5f0;
-      color: #333;
-      font-family: -apple-system, BlinkMacSystemFont, "Noto Serif SC",
-                   "Songti SC", "SimSun", serif;
-    }
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-    .container {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 60px 24px;
-    }
+        body {
+            margin: 0;
+            background: #f7f6f2;
+            color: #292929;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "PingFang SC",
+                "Hiragino Sans GB",
+                "Microsoft YaHei",
+                sans-serif;
+        }
 
-    header {
-      text-align: center;
-      margin-bottom: 60px;
-    }
+        header {
+            width: 100%;
+            padding: 42px 20px 28px;
+            text-align: center;
+            border-bottom: 1px solid #e6e3dc;
+        }
 
-    h1 {
-      font-size: 36px;
-      font-weight: 500;
-      margin-bottom: 12px;
-    }
+        .site-name {
+            font-size: 25px;
+            font-weight: 500;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
 
-    .subtitle {
-      color: #777;
-      font-size: 16px;
-    }
+        .site-description {
+            font-size: 13px;
+            color: #999;
+            letter-spacing: 1px;
+        }
 
-    .intro {
-      line-height: 2;
-      font-size: 17px;
-      margin-bottom: 50px;
-    }
+        main {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 55px 24px 80px;
+        }
 
-    .article-list {
-      border-top: 1px solid #ddd;
-    }
+        .article-title {
+            text-align: center;
+            font-size: 30px;
+            font-weight: 500;
+            line-height: 1.5;
+            margin: 0 0 18px;
+            color: #222;
+        }
 
-    .article {
-      display: block;
-      padding: 24px 5px;
-      border-bottom: 1px solid #ddd;
-      text-decoration: none;
-      color: #333;
-    }
+        .article-info {
+            text-align: center;
+            color: #999;
+            font-size: 13px;
+            margin-bottom: 55px;
+        }
 
-    .article:hover {
-      background: #eeeae2;
-    }
+        .article {
+            font-size: 17px;
+            line-height: 2;
+            letter-spacing: 0.5px;
+        }
 
-    .article-title {
-      font-size: 21px;
-      margin-bottom: 8px;
-    }
+        /* 中文正文自动首行缩进 */
+        .article p {
+            margin: 0 0 1.3em;
+            text-indent: 2em;
+        }
 
-    .article-description {
-      font-size: 14px;
-      color: #888;
-    }
+        .article h1,
+        .article h2,
+        .article h3 {
+            text-indent: 0;
+        }
 
-    footer {
-      text-align: center;
-      margin-top: 70px;
-      color: #999;
-      font-size: 13px;
-    }
-  </style>
+        .article h2 {
+            font-size: 21px;
+            font-weight: 500;
+            margin: 2.5em 0 1em;
+        }
+
+        .article h3 {
+            font-size: 18px;
+            font-weight: 500;
+            margin: 2em 0 0.8em;
+        }
+
+        .article blockquote {
+            margin: 2em 0;
+            padding: 12px 20px;
+            border-left: 3px solid #bbb;
+            color: #777;
+            background: #f0eee9;
+        }
+
+        .article ul,
+        .article ol {
+            padding-left: 2em;
+            margin: 1em 0;
+        }
+
+        .article li {
+            margin-bottom: 0.5em;
+        }
+
+        .article hr {
+            border: 0;
+            border-top: 1px solid #ddd;
+            margin: 45px 0;
+        }
+
+        .article a {
+            color: #555;
+            text-decoration: underline;
+        }
+
+        .article img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 30px auto;
+        }
+
+        footer {
+            text-align: center;
+            padding: 35px 20px 50px;
+            color: #aaa;
+            font-size: 12px;
+            letter-spacing: 1px;
+            border-top: 1px solid #e6e3dc;
+        }
+
+        .loading {
+            text-align: center;
+            color: #999;
+            padding: 50px 0;
+        }
+
+        .error {
+            color: #a44;
+            background: #f4eaea;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 600px) {
+
+            header {
+                padding: 30px 18px 22px;
+            }
+
+            .site-name {
+                font-size: 22px;
+            }
+
+            main {
+                padding: 38px 20px 60px;
+            }
+
+            .article-title {
+                font-size: 25px;
+            }
+
+            .article-info {
+                margin-bottom: 38px;
+            }
+
+            .article {
+                font-size: 16px;
+                line-height: 2;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-  <div class="container">
+<header>
+    <div class="site-name">老绥远韩氏</div>
+    <div class="site-description">文字 · 思考 · 生活</div>
+</header>
 
-    <header>
-      <h1>父亲的回忆录</h1>
-      <div class="subtitle">
-        The Memories of My Father
-      </div>
-    </header>
+<main>
 
-    <div class="intro">
-      <p>
-        这里记录父亲留下的文字与人生回忆。
-      </p>
+    <h1 class="article-title" id="title">正在加载……</h1>
 
-      <p>
-        一个普通人的记忆，也是一段属于那个时代的个人记录。
-      </p>
-
-      <p>
-        文字将持续整理、保存与发布。
-      </p>
+    <div class="article-info">
+        <span id="info">老绥远韩氏 · 文章</span>
     </div>
 
-    <div class="article-list">
+    <article class="article" id="content">
+        <div class="loading">正在加载文章……</div>
+    </article>
 
-      <a class="article" href="articles/01.html">
-        <div class="article-title">
-          刍议“接待用鸡”
-        </div>
+</main>
 
-        <div class="article-description">
-          回忆录 · 第一篇
-        </div>
-      </a>
+<footer>
+    © 2026 老绥远韩氏· All Rights Reserved
+</footer>
 
-    </div>
 
-    <footer>
-      © 2026 · The Memories of My Father
-    </footer>
+<script>
+/*
+ * 自动读取 01.md
+ * 不需要手动复制文章到 HTML
+ */
 
-  </div>
+async function loadArticle() {
+
+    const content = document.getElementById("content");
+    const title = document.getElementById("title");
+
+    try {
+
+        const response = await fetch("01.md");
+
+        if (!response.ok) {
+            throw new Error("无法找到 01.md");
+        }
+
+        const markdown = await response.text();
+
+        /*
+         * 简单 Markdown 转 HTML
+         */
+
+        let text = markdown.trim();
+
+        // 转义 HTML
+        text = text
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;");
+
+        // 图片
+        text = text.replace(
+            /!\[([^\]]*)\]\(([^)]+)\)/g,
+            '<img src="$2" alt="$1">'
+        );
+
+        // 标题
+        text = text.replace(
+            /^### (.*)$/gm,
+            "<h3>$1</h3>"
+        );
+
+        text = text.replace(
+            /^## (.*)$/gm,
+            "<h2>$1</h2>"
+        );
+
+        text = text.replace(
+            /^# (.*)$/gm,
+            "<h1>$1</h1>"
+        );
+
+        // 引用
+        text = text.replace(
+            /^> (.*)$/gm,
+            "<blockquote>$1</blockquote>"
+        );
+
+        // 分割线
+        text = text.replace(
+            /^---$/gm,
+            "<hr>"
+        );
+
+        // 粗体
+        text = text.replace(
+            /\*\*(.*?)\*\*/g,
+            "<strong>$1</strong>"
+        );
+
+        // 斜体
+        text = text.replace(
+            /\*(.*?)\*/g,
+            "<em>$1</em>"
+        );
+
+        /*
+         * 普通段落
+         */
+
+        const lines = text.split(/\n\s*\n/);
+
+        let html = "";
+
+        lines.forEach(block => {
+
+            block = block.trim();
+
+            if (!block) return;
+
+            if (
+                block.startsWith("<h1>") ||
+                block.startsWith("<h2>") ||
+                block.startsWith("<h3>") ||
+                block.startsWith("<blockquote>") ||
+                block.startsWith("<hr>") ||
+                block.startsWith("<img")
+            ) {
+
+                html += block;
+
+            } else {
+
+                html += "<p>" + block.replace(/\n/g, "<br>") + "</p>";
+
+            }
+
+        });
+
+        content.innerHTML = html;
+
+
+        /*
+         * 自动使用文章第一行 # 标题
+         */
+
+        const firstHeading = content.querySelector("h1");
+
+        if (firstHeading) {
+            title.textContent = firstHeading.textContent;
+            firstHeading.remove();
+        } else {
+            title.textContent = "随缘寒";
+        }
+
+
+    } catch (error) {
+
+        content.innerHTML =
+            '<div class="error">' +
+            '文章加载失败。<br><br>' +
+            error.message +
+            '<br><br>' +
+            '请确认 01.md 和 index.html 位于同一个目录。' +
+            '</div>';
+
+        title.textContent = "文章";
+    }
+}
+
+loadArticle();
+</script>
 
 </body>
 </html>
